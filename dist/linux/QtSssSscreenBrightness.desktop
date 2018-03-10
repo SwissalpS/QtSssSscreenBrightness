@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Exec=/usr/local/bin/QtSssSscreenBrightness
+Name=Qt SwissalpS screen brightness control for iMac
+GenericName=Screen Brightness Control.
+Icon=QtSssSscreenBrightnessIcon
+Terminal=false
+Categories=Utilities;
