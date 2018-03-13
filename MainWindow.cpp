@@ -81,7 +81,7 @@ void MainWindow::on_verticalScrollBar_valueChanged(int iNewValue) {
 
 	CLIprocess *pP = new CLIprocess(this);
 
-	pP->start("xrandr --output eDP --brightness " + sValue);
+	pP->start(QStringLiteral("xrandr --output eDP --brightness ") + sValue);
 
 	// keep from possibly overflowing by pausing execution
 	pP->waitForFinished();
