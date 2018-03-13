@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>262</width>
-    <height>32</height>
+    <height>33</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -26,6 +26,9 @@
         <verstretch>0</verstretch>
        </sizepolicy>
       </property>
+      <property name="toolTip">
+       <string>Boost: allow blow-out brightness</string>
+      </property>
       <property name="text">
        <string notr="true"/>
       </property>
@@ -38,6 +41,9 @@
         <horstretch>0</horstretch>
         <verstretch>0</verstretch>
        </sizepolicy>
+      </property>
+      <property name="toolTip">
+       <string>Left = Dark; Right = Bright</string>
       </property>
       <property name="maximum">
        <number>1000</number>
