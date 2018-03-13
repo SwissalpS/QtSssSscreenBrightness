@@ -29,7 +29,7 @@ private slots:
 	void on_verticalScrollBar_valueChanged(int iNewValue);
 
 protected:
-	void changeEvent(QEvent *e);
+	void changeEvent(QEvent *pEvent);
 
 public:
 	explicit MainWindow(QWidget *pParent = 0);

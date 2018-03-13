@@ -1,8 +1,8 @@
 #include "CLIprocess.h"
 
 #include <iostream>
-#include <QTimer>
 #include <QHash>
+#include <QTimer>
 
 
 

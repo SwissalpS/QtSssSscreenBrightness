@@ -37,22 +37,21 @@ MainWindow::~MainWindow() {
 
 	delete this->pUI;
 
-}
+} // dealloc
 
 
-void MainWindow::changeEvent(QEvent *e) {
+void MainWindow::changeEvent(QEvent *pEvent) {
 
-	QMainWindow::changeEvent(e);
-	switch (e->type()) {
+	QMainWindow::changeEvent(pEvent);
 
-		case QEvent::LanguageChange:
-			pUI->retranslateUi(this);
-		break;
+	switch (pEvent->type()) {
+
+		case QEvent::LanguageChange: pUI->retranslateUi(this); break;
 
 		default:
 		break;
 
-	}
+	} // switch type
 
 } // changeEvent
 
@@ -82,7 +81,7 @@ void MainWindow::on_verticalScrollBar_valueChanged(int iNewValue) {
 
 	pP->start("xrandr --output eDP --brightness " + sValue);
 
-	// keep from overflowing by pausing execution
+	// keep from possibly overflowing by pausing execution
 	pP->waitForFinished();
 
 	delete pP;
