@@ -11,24 +11,26 @@ MainWindow::MainWindow(QWidget *pParent) :
 	pUI->setupUi(this);
 
 	// get current value
-	CLIprocess *pP = new CLIprocess(this);
-	//pP->setProgram("stdbuf -o0 xrandr --verbose | awk '/Brightness/ { print $2; exit }'");
-	pP->start("/home/luke/gitSwissalpS/FedoraScripts/graphics/getBrightnessXrandr.sh");
-
-	pP->waitForFinished();
-
 	float fCurrent = 0.55f;
+	const QString sCommand =
+			QStringLiteral("stdbuf -o0 xrandr --verbose | awk '/Brightness/ { print $2; exit }';exit 0;\n");
 
-	if (!pP->hasProcessError()) {
-
-		fCurrent = pP->processOutput().last().toFloat();
-
-	} // if got result
+	QProcess *pProcess = new QProcess(this);
+	pProcess->start(getenv("SHELL"));
+	if (pProcess->waitForStarted()) {
+		pProcess->write(sCommand.toUtf8());
+		pProcess->waitForFinished();
+		if (0 == pProcess->exitCode() + pProcess->exitStatus())
+			fCurrent = pProcess->readAll().trimmed().toFloat();
+	} // if started OK
 
 	int iCurrent = (int)(fCurrent * 1000);
+
+	// reflect current value
 	this->pUI->verticalScrollBar->setValue(iCurrent);
 
-	delete pP;
+	// cleanup
+	delete pProcess;
 
 } // construct
 
